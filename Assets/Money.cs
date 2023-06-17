@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
 
 public class Money : MonoBehaviour
 {
@@ -16,10 +17,20 @@ public class Money : MonoBehaviour
 
     public Animator cube;
 
+    private void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+        income = PlayerPrefs.GetInt("income", 1);
+        money = PlayerPrefs.GetInt("money", 0);
+        upgradeCost = PlayerPrefs.GetInt("upgradeCost", 10);
+        level = PlayerPrefs.GetInt("level", 1);
+    }
+
     public void CubeClick()
     {
         money += income;
         cube.Play("cube_click");
+        Save();
     }
 
     public void UpgradeIncome()
@@ -35,13 +46,23 @@ public class Money : MonoBehaviour
             }
             else if (upgradeCost >= 100 && upgradeCost < 1000)
             {
-                upgradeCost += 100; level = 5;
+                upgradeCost += 100; level = 3;
             }
-            else if (upgradeCost < 1000)
+            else if (upgradeCost > 1000)
             {
-                level = 10;
+                upgradeCost += 500; level = 5;
             }
         }
+
+        Save();
+    }
+
+    private void Save()
+    {
+        PlayerPrefs.SetInt("income", income);
+        PlayerPrefs.SetInt("money", money);
+        PlayerPrefs.SetInt("upgradeCost", upgradeCost);
+        PlayerPrefs.SetInt("level", level);
     }
 
     void Update()
