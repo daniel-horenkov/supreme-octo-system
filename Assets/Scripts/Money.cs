@@ -6,10 +6,12 @@ using UnityEditor;
 
 public class Money : MonoBehaviour
 {
-    public int income = 1;
-    public int money;
-    public int upgradeCost;
-    public int level = 1;
+    public static int income = 1;
+    public static int money;
+    public static int upgradeCost;
+    public static int level = 1;
+
+    [SerializeField] private AudioSource buy, buyError, click;
 
     public TextMeshProUGUI incomeText;
     public TextMeshProUGUI moneyText;
@@ -30,6 +32,7 @@ public class Money : MonoBehaviour
     {
         money += income;
         cube.Play("cube_click");
+        click.Stop(); click.Play();
         Save();
     }
 
@@ -37,6 +40,8 @@ public class Money : MonoBehaviour
     {
         if(money >= upgradeCost)
         {
+            buy.Stop(); buy.Play();
+
             income += level;
             money -= upgradeCost;
 
@@ -48,16 +53,21 @@ public class Money : MonoBehaviour
             {
                 upgradeCost += 100; level = 3;
             }
-            else if (upgradeCost > 1000)
+            else if (upgradeCost >= 1000)
             {
                 upgradeCost += 500; level = 5;
             }
         }
+        else
+        {
+            buyError.Stop(); buyError.Play();
+        }
+
 
         Save();
     }
 
-    private void Save()
+    public static void Save()
     {
         PlayerPrefs.SetInt("income", income);
         PlayerPrefs.SetInt("money", money);
