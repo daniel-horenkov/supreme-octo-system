@@ -100,14 +100,14 @@ public class Rewarded : IUnityAdsLoadListener,  IUnityAdsShowListener
     public void OnUnityAdsShowClick(string placementId)
     {
         AD.canWatchAD = true;
-        Money.money += 999;
+        Money.income += 20;
         Money.Save();
     }
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
         AD.canWatchAD = true;
-        Money.money += 999;
+        Money.income += 20;
         Money.Save();
     }
 
