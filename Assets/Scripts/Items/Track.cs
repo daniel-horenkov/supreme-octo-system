@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Purchasable/Track")]
 public class Track : ScriptableObject
 {
-    public Sprite preview;
+    public string trackName;
+    public int trackSlotNumber;
+    public Sprite cover;
     public AudioClip musicTrack;
-    public int cost = 2500;
-    public bool owned = false;
 }
