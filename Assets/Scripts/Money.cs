@@ -57,6 +57,14 @@ public class Money : MonoBehaviour
             {
                 upgradeCost += 500; level = 5;
             }
+            else if (upgradeCost >= 5000)
+            {
+                upgradeCost += 1000; level = 10;
+            }
+            else if (upgradeCost >= 10000)
+            {
+                upgradeCost += 2500; level = 15;
+            }
         }
         else
         {
