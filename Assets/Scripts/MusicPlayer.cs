@@ -7,21 +7,24 @@ using TMPro;
 public class MusicPlayer : MonoBehaviour
 {
     public int selectedTrack = 0;
-    public Image displayCover;
+    public Image displayCover, pauseButton;
     public TextMeshProUGUI trackName;
     public Track[] musicTrackList;
 
-    public MusicSlot slot;
-
     private AudioSource ost;
+    public Sprite play, pause;
 
     void Start()
     {
         ost = GameObject.Find("OST").GetComponent<AudioSource>();
+        PlayNextTrack(0);
     }
 
-    void Update()
+    public void PlayNextTrack(int i)
     {
+        ost.Stop();
+        selectedTrack += i;
+
         if (selectedTrack > musicTrackList.Length - 1) selectedTrack = 0;
         if (selectedTrack < 0) selectedTrack = musicTrackList.Length - 1;
 
@@ -29,19 +32,19 @@ public class MusicPlayer : MonoBehaviour
         trackName.text = musicTrackList[selectedTrack].trackName;
 
         ost.clip = musicTrackList[selectedTrack].musicTrack;
-    }
 
-    public void PlayNextTrack()
-    {
-        ost.Stop();
-        selectedTrack++;
         ost.Play();
     }
 
-    public void PlayPrevTrack()
+    public void Pause()
     {
-        ost.Stop();
-        selectedTrack--;
-        ost.Play();
+        if (ost.isPlaying)
+        {
+            ost.Pause(); pauseButton.sprite = pause;
+        }
+        else
+        {
+            ost.Play(); pauseButton.sprite = play;
+        }
     }
 }
