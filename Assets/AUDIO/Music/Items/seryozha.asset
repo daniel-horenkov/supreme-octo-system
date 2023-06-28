@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba78b4924b374e4592d4aba60e6cdd5, type: 3}
+  m_Name: seryozha
+  m_EditorClassIdentifier: 
+  trackName: "pa$h\xFD - seryozha"
+  trackSlotNumber: 4
+  cover: {fileID: 0}
+  musicTrack: {fileID: 8300000, guid: 5b5d5e698e12d9f4f8c4c12ee6bae220, type: 3}
