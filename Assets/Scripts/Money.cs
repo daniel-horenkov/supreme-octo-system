@@ -7,7 +7,7 @@ using UnityEditor;
 public class Money : MonoBehaviour
 {
     public static int income = 1;
-    public static long money;
+    public static ulong money;
     public static int upgradeCost;
     public static int level = 1;
 
@@ -24,14 +24,14 @@ public class Money : MonoBehaviour
     {
         //PlayerPrefs.DeleteAll();
         income = PlayerPrefs.GetInt("income", 1);
-        money = long.Parse(PlayerPrefs.GetString("money", "0"));
+        money = ulong.Parse(PlayerPrefs.GetString("money", "0"));
         upgradeCost = PlayerPrefs.GetInt("upgradeCost", 10);
         level = PlayerPrefs.GetInt("level", 1);
     }
 
     public void CubeClick()
     {
-        money += income;
+        money += (ulong)income;
         cube.Play("cube_click");
         click.Stop(); click.Play();
         Save();
@@ -39,12 +39,12 @@ public class Money : MonoBehaviour
 
     public void UpgradeIncome()
     {
-        if(money >= upgradeCost)
+        if(money >= (ulong)upgradeCost)
         {
             buy.Stop(); buy.Play();
 
             income += level;
-            money -= upgradeCost;
+            money -= (ulong)upgradeCost;
 
             MoneyCheck();
         }
@@ -58,12 +58,12 @@ public class Money : MonoBehaviour
 
     public void UpgX10()
     {
-        if (money >= upgradeCost)
+        if (money >= (ulong)upgradeCost)
         {
             buy.Stop(); buy.Play();
 
             income += 10;
-            money -= upgradeCost * 9;
+            money -= (ulong)upgradeCost * 9;
 
             MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck();
         }  

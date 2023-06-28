@@ -14,8 +14,14 @@ public class BuySlot : MonoBehaviour
     public TextMeshProUGUI textBuyButton;
     private MeshRenderer cube;
 
+    private AudioSource selectSound, buySound, errorSound; 
+
     void Start()
     {
+        selectSound = GameObject.Find("Click").GetComponent<AudioSource>();
+        buySound = GameObject.Find("Buy").GetComponent<AudioSource>();
+        errorSound = GameObject.Find("Error").GetComponent<AudioSource>();
+
         cube = GameObject.Find("Cube").GetComponent<MeshRenderer>();
 
         preview.sprite = skin.preview;
@@ -27,16 +33,33 @@ public class BuySlot : MonoBehaviour
             textBuyButton.text = "Select";
     }
 
+    private void Update()
+    {
+        if (skin.owned)
+            textBuyButton.text = "Select";
+    }
+
     public void BuySkin()
     {
-        if (!skin.owned && Money.money >= skin.cost)
+        if (!skin.owned && Money.money >= (ulong)skin.cost)
         {
-            Money.money -= skin.cost;
+            Money.money -= (ulong)skin.cost;
+            skin.owned = true;
             textBuyButton.text = "Select";
             ChangeSkin();
+            GameObject.Find("GameManager").GetComponent<SkinSaves>().Save();
+            Money.Save();
+            buySound.Stop(); buySound.Play();
+        }
+        else if (skin.owned)
+        {
+            ChangeSkin();
+            selectSound.Stop(); selectSound.Play();
         }
         else
-            ChangeSkin();
+        {
+            errorSound.Stop(); errorSound.Play();
+        }
     }
 
     private void ChangeSkin()
