@@ -15,5 +15,5 @@ MonoBehaviour:
   skinName: Grass Cube
   preview: {fileID: 21300000, guid: 5ac5e222dc55b58439e04952615db769, type: 3}
   material: {fileID: 2100000, guid: 79837e8fc036c5e4cb05d598b5763fd3, type: 2}
-  cost: 7500
+  cost: 10000
   owned: 0

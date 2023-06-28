@@ -15,5 +15,5 @@ MonoBehaviour:
   skinName: K4binetik Cube
   preview: {fileID: 21300000, guid: ccb8888b0a91ab04dbf37ddf09ec8141, type: 3}
   material: {fileID: 2100000, guid: b40a8bd9314d04e4ba77a1240cae0798, type: 2}
-  cost: 1000000000
+  cost: 2147483647
   owned: 0

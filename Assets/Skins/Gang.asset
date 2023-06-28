@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e5232dd7ffaa84499eb5764c7a1cfb, type: 3}
-  m_Name: Bad brick
+  m_Name: Gang
   m_EditorClassIdentifier: 
-  skinName: Bad Brick Cube
-  preview: {fileID: 21300000, guid: d7a65d8b300855147a2dafc2ed681122, type: 3}
-  material: {fileID: 0}
-  cost: 25000
+  skinName: Gangsta Cube
+  preview: {fileID: 21300000, guid: ee71c40bebbba6440b29c5fbc844720f, type: 3}
+  material: {fileID: 2100000, guid: f39540318d4aa5e4d8e4c3f162b8d386, type: 2}
+  cost: 100000
   owned: 0

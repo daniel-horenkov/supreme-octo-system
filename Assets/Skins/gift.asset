@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e5232dd7ffaa84499eb5764c7a1cfb, type: 3}
-  m_Name: Bad brick
+  m_Name: gift
   m_EditorClassIdentifier: 
-  skinName: Bad Brick Cube
-  preview: {fileID: 21300000, guid: d7a65d8b300855147a2dafc2ed681122, type: 3}
-  material: {fileID: 0}
-  cost: 25000
+  skinName: Gift Cube
+  preview: {fileID: 21300000, guid: b6d399a984ed3e24998a4c73847b9d7c, type: 3}
+  material: {fileID: 2100000, guid: cf76f5d7c35d56b41af7d3d1ef1abfcb, type: 2}
+  cost: 1000000
   owned: 0
