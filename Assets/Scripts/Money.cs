@@ -7,7 +7,7 @@ using UnityEditor;
 public class Money : MonoBehaviour
 {
     public static int income = 1;
-    public static int money;
+    public static long money;
     public static int upgradeCost;
     public static int level = 1;
 
@@ -24,7 +24,7 @@ public class Money : MonoBehaviour
     {
         //PlayerPrefs.DeleteAll();
         income = PlayerPrefs.GetInt("income", 1);
-        money = PlayerPrefs.GetInt("money", 0);
+        money = long.Parse(PlayerPrefs.GetString("money", "0"));
         upgradeCost = PlayerPrefs.GetInt("upgradeCost", 10);
         level = PlayerPrefs.GetInt("level", 1);
     }
@@ -102,7 +102,7 @@ public class Money : MonoBehaviour
     public static void Save()
     {
         PlayerPrefs.SetInt("income", income);
-        PlayerPrefs.SetInt("money", money);
+        PlayerPrefs.SetString("money", money.ToString());
         PlayerPrefs.SetInt("upgradeCost", upgradeCost);
         PlayerPrefs.SetInt("level", level);
     }

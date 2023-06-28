@@ -23,6 +23,6 @@ public class MusicSlot : MonoBehaviour
 
     public void PlaySpecTrack()
     {
-        jukebox.selectedTrack = track.trackSlotNumber;
+        jukebox.PlayNextTrack(track.trackSlotNumber - jukebox.selectedTrack);
     }
 }

@@ -11,13 +11,15 @@ public class MusicPlayer : MonoBehaviour
     public TextMeshProUGUI trackName;
     public Track[] musicTrackList;
 
-    private AudioSource ost;
+    public AudioSource ost;
     public Sprite play, pause;
 
     void Start()
     {
         ost = GameObject.Find("OST").GetComponent<AudioSource>();
-        PlayNextTrack(0);
+
+        displayCover.sprite = musicTrackList[0].cover;
+        trackName.text = musicTrackList[0].trackName;
     }
 
     public void PlayNextTrack(int i)
