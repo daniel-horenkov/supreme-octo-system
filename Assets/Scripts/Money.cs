@@ -102,6 +102,8 @@ public class Money : MonoBehaviour
     public static void Save()
     {
         PlayerPrefs.SetInt("income", income);
+        PlayerRating.ReportIncomeScore(income);
+
         PlayerPrefs.SetString("money", money.ToString());
         PlayerPrefs.SetInt("upgradeCost", upgradeCost);
         PlayerPrefs.SetInt("level", level);
