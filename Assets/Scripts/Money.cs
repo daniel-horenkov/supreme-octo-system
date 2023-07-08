@@ -19,6 +19,9 @@ public class Money : MonoBehaviour
 
     public Animator cube;
 
+    [Header("Flying Income")]
+    [SerializeField] private GameObject flyingIncome;
+
     private void Start()
     {
         //PlayerPrefs.DeleteAll();
@@ -30,6 +33,7 @@ public class Money : MonoBehaviour
 
     public void CubeClick()
     {
+        Instantiate(flyingIncome);
         money += (ulong)income;
         cube.Play("cube_click");
         click.Stop(); click.Play();

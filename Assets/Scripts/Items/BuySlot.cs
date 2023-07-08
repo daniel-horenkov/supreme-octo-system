@@ -44,10 +44,9 @@ public class BuySlot : MonoBehaviour
         if (!skin.owned && Money.money >= (ulong)skin.cost)
         {
             Money.money -= (ulong)skin.cost;
-            skin.owned = true;
+            skin.SaveOwn();
             textBuyButton.text = "Select";
             ChangeSkin();
-            GameObject.Find("GameManager").GetComponent<SkinSaves>().Save();
             Money.Save();
             buySound.Stop(); buySound.Play();
         }
@@ -64,6 +63,7 @@ public class BuySlot : MonoBehaviour
 
     private void ChangeSkin()
     {
+        PlayerPrefs.SetString("currentSkin", skin.name);
         cube.material = skin.material;
     }
 }

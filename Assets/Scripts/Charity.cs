@@ -19,6 +19,7 @@ public class Charity : MonoBehaviour
 
                 ulong charity = ulong.Parse(PlayerPrefs.GetString("charity", "0"));
                 charity += value;
+                PlayerRating.ReportCharityScore(charity);
                 PlayerPrefs.SetString("charity", charity.ToString());
 
                 buySound.Stop(); buySound.Play();
