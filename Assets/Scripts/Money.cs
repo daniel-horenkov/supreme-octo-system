@@ -16,7 +16,6 @@ public class Money : MonoBehaviour
     public TextMeshProUGUI incomeText;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI upgradeCostText;
-    public TextMeshProUGUI x10upgradeCostText;
 
     public Animator cube;
 
@@ -48,25 +47,6 @@ public class Money : MonoBehaviour
 
             MoneyCheck();
         }
-        else
-        {
-            buyError.Stop(); buyError.Play();
-        }
-
-        Save();
-    }
-
-    public void UpgX10()
-    {
-        if (money >= (ulong)upgradeCost)
-        {
-            buy.Stop(); buy.Play();
-
-            income += 10;
-            money -= (ulong)upgradeCost * 9;
-
-            MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck(); MoneyCheck();
-        }  
         else
         {
             buyError.Stop(); buyError.Play();
@@ -114,6 +94,5 @@ public class Money : MonoBehaviour
         moneyText.text = money.ToString();
         incomeText.text = "Income: $" + income.ToString();
         upgradeCostText.text = "UPGRADE INCOME: $" + upgradeCost.ToString();
-        x10upgradeCostText.text = "UPGx10: $" + (upgradeCost * 9).ToString();
     }
 }
