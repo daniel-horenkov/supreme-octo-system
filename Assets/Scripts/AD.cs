@@ -33,7 +33,7 @@ public class AD : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(45);
             ShowInterstitial();
         }
     }

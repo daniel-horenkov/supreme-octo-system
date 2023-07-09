@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba78b4924b374e4592d4aba60e6cdd5, type: 3}
   m_Name: 6. Razzlabyxa
   m_EditorClassIdentifier: 
-  trackName: "bll1ck - Ra$$la\u0E3F\xA5xa"
+  trackName: bll1ck - Ra$$LaByXXXa
   trackSlotNumber: 5
-  cover: {fileID: 21300000, guid: b89eee745cc74f44ba38577ffabaad83, type: 3}
+  cover: {fileID: 21300000, guid: 25959a74f942dd741b0636ba092589a9, type: 3}
   musicTrack: {fileID: 8300000, guid: 535fe5b1bcb43f64c9bd8fdf4c7aacaa, type: 3}
