@@ -1,123 +1,95 @@
-﻿using System.Collections;
+using GoogleMobileAds.Api;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Advertisements;
 
-public class AD : MonoBehaviour, IUnityAdsInitializationListener
+public class AD : MonoBehaviour
 {
-    public static bool canWatchAD = false;
+    private bool canShowAD;
+
+    [Header("Interstitial")]
+    [SerializeField] private string interstitialID;
+    private InterstitialAd interstitialAd;
+
+    [Header("Rewarded")]
+    [SerializeField] private string rewardedID;
+    private RewardedAd rewardedAd;
 
     private void Start()
     {
-        canWatchAD = false;
-        StartCoroutine(Timer());
+        canShowAD = false;
+        MobileAds.Initialize(result => { });
+        LoadInterstitial();
+        LoadRewarded();
+        StartCoroutine(AdTimer());
     }
 
-    IEnumerator Timer()
+    private IEnumerator AdTimer()
     {
         yield return new WaitForSeconds(1);
-        Advertisement.Initialize("5318615", false, this);
+        canShowAD = true;
+        ShowInterstitial();
 
         while (true)
         {
-            yield return new WaitForSeconds(45);
-            if (canWatchAD)
-            {
-                canWatchAD = false;
-                Advertisement.Load("Interstitial_Android", new Interstitial());
-            }
+            yield return new WaitForSeconds(15);
+            ShowInterstitial();
         }
     }
 
-    public void ShowAD()
+    private void LoadInterstitial()
     {
-        if (canWatchAD)
+        interstitialAd = null;
+
+        InterstitialAd.Load(interstitialID, new AdRequest(), (InterstitialAd ad, LoadAdError loadAdError) =>
         {
-            canWatchAD = false;
-            Advertisement.Load("Rewarded_Android", new Rewarded());
-        }         
+            interstitialAd = ad;
+        });
     }
 
-    public void OnInitializationComplete()
+    private void ShowInterstitial()
     {
-        Advertisement.Load("Interstitial_Android", new Interstitial());
+        if (interstitialAd != null && interstitialAd.CanShowAd())
+        {
+            if (canShowAD)
+            {
+                canShowAD = false;
+                interstitialAd.Show();
+            }
+        }
+        canShowAD = true;
+        LoadInterstitial();
     }
 
-    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+    private void LoadRewarded()
     {
-        canWatchAD = true;
-    }
-}
+        rewardedAd = null;
 
-public class Interstitial : IUnityAdsLoadListener, IUnityAdsShowListener
-{
-    public void OnUnityAdsAdLoaded(string placementId)
-    {
-        Advertisement.Show("Interstitial_Android", this);
+        RewardedAd.Load(rewardedID, new AdRequest(), (RewardedAd ad, LoadAdError loadAdError) =>
+        {
+            rewardedAd = ad;
+        });
     }
 
-    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    public void ShowRewarded()
     {
-        AD.canWatchAD = true;
-    }
-
-    public void OnUnityAdsShowClick(string placementId)
-    {
-        AD.canWatchAD = true;
-    }
-
-    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
-    {
-        AD.canWatchAD = true;
-    }
-
-    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
-    {
-        AD.canWatchAD = true;
-    }
-
-    public void OnUnityAdsShowStart(string placementId)
-    {
-        AD.canWatchAD = true;
-    }
-}
-
-public class Rewarded : IUnityAdsLoadListener,  IUnityAdsShowListener
-{
-    public void OnUnityAdsAdLoaded(string placementId)
-    {
-        Advertisement.Show("Rewarded_Android", this);
-    }
-
-    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
-    {
-        AD.canWatchAD = true;
-    }
-
-    public void OnUnityAdsShowClick(string placementId)
-    {
-        AD.canWatchAD = true;
-        Money.income += 20;
-        Money.Save();
-    }
-
-    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
-    {
-        AD.canWatchAD = true;
-        Money.income += 20;
-        Money.Save();
-    }
-
-    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
-    {
-        AD.canWatchAD = true;
-    }
-
-    public void OnUnityAdsShowStart(string placementId)
-    {
-        AD.canWatchAD = true;
+        if (rewardedAd != null && rewardedAd.CanShowAd())
+        {
+            if (canShowAD)
+            {
+                canShowAD = false;
+                rewardedAd.Show(callback => 
+                {
+                    if (callback.Amount > 0)
+                    {
+                        Money.income += 20;
+                        Money.Save();
+                    }
+                });
+            }
+        }
+        canShowAD = true;
+        LoadRewarded();
     }
 }

@@ -3,19 +3,20 @@ using GooglePlayGames.BasicApi;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
 public class PlayerRating : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI currentPlaceTextIncome, currentPlaceTextCharity;
-    [SerializeField] private Transform top10ListIncome, top10ListCharity;
+    [SerializeField] private GameObject incomeAward, charityAward;
 
     public void Start()
     {
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
         Social.localUser.Authenticate(result => { });
+        StartCoroutine(FirstPlaceLoader());
     }
 
     public static void ReportIncomeScore(int score)
@@ -30,6 +31,26 @@ public class PlayerRating : MonoBehaviour
 
     public void LoadLeaderboard()
     {
+        StopAllCoroutines();
+        StartCoroutine(FirstPlaceLoader());
         Social.ShowLeaderboardUI();
+    }
+
+    private IEnumerator FirstPlaceLoader()
+    {
+        //Income
+        Social.LoadScores("CgkIldSyv7IcEAIQAQ", result => CheckList(result, incomeAward));
+        //Charity
+        Social.LoadScores("CgkIldSyv7IcEAIQAg", result => CheckList(result, charityAward));
+
+        yield return new WaitForEndOfFrame();
+    }
+
+    private void CheckList(IScore[] scores, GameObject bg)
+    {
+        if (scores[1].userID == Social.localUser.id)
+            bg.SetActive(true);
+        else
+            bg.SetActive(false);
     }
 }
