@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bba78b4924b374e4592d4aba60e6cdd5, type: 3}
-  m_Name: YEET
+  m_Name: 7. streets
   m_EditorClassIdentifier: 
-  trackName: "pa$h\xFD - YEET"
-  trackSlotNumber: 1
+  trackName: "pa$h\xFD - str\u0451\u0451ts"
+  trackSlotNumber: 6
   cover: {fileID: 21300000, guid: b89eee745cc74f44ba38577ffabaad83, type: 3}
-  musicTrack: {fileID: 8300000, guid: 9463db38a4902664d93be989d3ab7857, type: 3}
+  musicTrack: {fileID: 8300000, guid: 176bcac6925a3ee46a58b0d9d1b0ced5, type: 3}
