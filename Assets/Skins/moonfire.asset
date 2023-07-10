@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e5232dd7ffaa84499eb5764c7a1cfb, type: 3}
   m_Name: moonfire
   m_EditorClassIdentifier: 
-  skinName: Moonfire Cube
+  skinName: kaktusoid test
   preview: {fileID: 0}
   material: {fileID: 2100000, guid: 953a889f9fdcae040bf4676ecbc4e595, type: 2}
   cost: 500000

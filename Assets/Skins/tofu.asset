@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tofu
   m_EditorClassIdentifier: 
   skinName: Tofu Cube
-  preview: {fileID: 0}
-  material: {fileID: 0}
+  preview: {fileID: 21300000, guid: 7207a7f4d0f69ed4696ae16fabd2450a, type: 3}
+  material: {fileID: 2100000, guid: f4cded6de31ecaa4985a8e246629d38e, type: 2}
   cost: 200000
   owned: 0

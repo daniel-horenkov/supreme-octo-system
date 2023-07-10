@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: gosling
   m_EditorClassIdentifier: 
   skinName: Literally Cube
-  preview: {fileID: 0}
-  material: {fileID: 0}
+  preview: {fileID: 21300000, guid: a131abff1875e4744a7755da0bb80b80, type: 3}
+  material: {fileID: 2100000, guid: fe17ce6d47fba4645b308942d01196e9, type: 2}
   cost: 2000000
   owned: 0
