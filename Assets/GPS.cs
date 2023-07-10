@@ -24,7 +24,8 @@
 
 public static class GPS
 {
-        public const string leaderboard_highest_income = "CgkIldSyv7IcEAIQAQ"; // <GPGSID>
+        public const string leaderboard_charity_leaderboard = "CgkIldSyv7IcEAIQAg"; // <GPGSID>
+        public const string leaderboard_highest_income = "CgkIldSyv7IcEAIQAw"; // <GPGSID>
 
 }
 
