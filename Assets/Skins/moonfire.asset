@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e5232dd7ffaa84499eb5764c7a1cfb, type: 3}
-  m_Name: Ruby
+  m_Name: moonfire
   m_EditorClassIdentifier: 
-  skinName: Ruby Cube
-  preview: {fileID: 21300000, guid: 479a46f330c53c14ca9fbda3fb25214b, type: 3}
-  material: {fileID: 2100000, guid: e5437cb47b66abb4dac1e347086c2d54, type: 2}
-  cost: 10000000
+  skinName: Moonfire Cube
+  preview: {fileID: 0}
+  material: {fileID: 2100000, guid: 953a889f9fdcae040bf4676ecbc4e595, type: 2}
+  cost: 500000
   owned: 0
