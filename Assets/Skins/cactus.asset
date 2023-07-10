@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e5232dd7ffaa84499eb5764c7a1cfb, type: 3}
-  m_Name: moonfire
+  m_Name: cactus
   m_EditorClassIdentifier: 
-  skinName: kaktusoid test
-  preview: {fileID: 0}
-  material: {fileID: 2100000, guid: 953a889f9fdcae040bf4676ecbc4e595, type: 2}
+  skinName: Moonfire Cube
+  preview: {fileID: 21300000, guid: a2dceb671fe8dbe4994d955927f794d7, type: 3}
+  material: {fileID: 2100000, guid: 8d5dd70bf4638944da4030a9f3450554, type: 2}
   cost: 500000
   owned: 0
